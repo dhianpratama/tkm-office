@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="SmartShelve">
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="app.less" type="text/css" rel="stylesheet/less">
+    <link href="bower_components/flat-admin-bootstrap-templates/css/style.css" type="text/css" rel="stylesheet">
+    <link href="bower_components/flat-admin-bootstrap-templates/css/themes/flat-green.css" type="text/css"
+          rel="stylesheet">
+    <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        .form-login {
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body class="flat-green">
+<div class="container" ng-controller="LoginCtrl" style="padding-top: 50px">
+    <div style="width: 30%; margin-right: auto; margin-left: auto;text-align: center;">
+        <img src="/Web/content/images/tkm-logo-small.png" style="width:100%;">
+    </div>
+    <div class="panel fresh-color panel-primary" style="width: 30%; margin-right: auto; margin-left: auto;">
+        <div class="panel-heading">
+            <label class="form-login-heading" style="font-size: 2em;">Login</label>
+        </div>
+        <div class="panel-body">
+            <form class="form-login" role="form">
+            <input type="text" class="form-control" placeholder="Username" data-ng-model="loginData.userName" required
+                   autofocus>
+            <input type="password" class="form-control" placeholder="Password" data-ng-model="loginData.password" required>
+            <button class="btn btn-lg btn-success btn-block" type="submit" data-ng-click="login()">Sign in</button>
+            <div data-ng-hide="message == ''" class="alert alert-danger">
+                {{message}}
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- Livereload script for development only (stripped during dist build) -->
+<!--<script src="http://localhost:35729/livereload.js" data-concat="false"></script>-->
+
+<!-- JS from Bower Components -->
+<script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-ui-scroll/dist/ui-scroll.min.js"></script>
+<script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js"></script>
+<script src="bower_components/angular-ui-event/dist/event.min.js"></script>
+<script src="bower_components/angular-ui-mask/dist/mask.min.js"></script>
+<script src="bower_components/angular-ui-validate/dist/validate.min.js"></script>
+<script src="bower_components/angular-ui-indeterminate/dist/indeterminate.min.js"></script>
+<script src="bower_components/angular-ui-uploader/dist/uploader.min.js"></script>
+<script src="bower_components/angular-ui-utils/index.js"></script>
+
+
+<!-- Javascript Libs for Theme -->
+<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components/Chart.js/Chart.min.js"></script>
+<script type="text/javascript" src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+<script type="text/javascript" src="bower_components/matchHeight/jquery.matchHeight-min.js"></script>
+<script type="text/javascript" src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="bower_components/datatables/media/js/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="bower_components/select2/dist/js/select2.full.min.js"></script>
+<script type="text/javascript" src="bower_components/ace-builds/src/ace.js"></script>
+<script type="text/javascript" src="bower_components/ace-builds/src/mode-html.js"></script>
+<script type="text/javascript" src="bower_components/ace-builds/src/theme-github.js"></script>
+<script type="text/javascript" src="bower_components/flat-admin-bootstrap-templates/dist/js/app.js"></script>
+
+<script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+<script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+<!-- Add New Bower Component JS Above -->
+
+
+<!-- Main App JS -->
+<script src="appLogin.js"></script>
+<script src="factory/internal-factory.js"></script>
+<script src="factory/factory.js"></script>
+<script src="internal/login.js"></script>
+<!-- Add New Component JS Above -->
+</body>
+</html>

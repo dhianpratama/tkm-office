@@ -1,0 +1,49 @@
+<div class="col-md-12" ng-controller="BinItemListCtrl">
+    <div class="row">
+        <div class="pull-left form-inline">
+            <button class="btn btn-success pull-left" ng-click="onAdd()">
+                <i class="fa fa-plus-square"></i>
+                Add Mapping
+            </button>
+        </div>
+        <div search-pagination-header search-query="searchQuery" on-search-function="fetchData()"></div>
+    </div>
+    <div class="row">
+        <table class="datatable table table-striped table-bordered data-grid" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="action-button"></th>
+                <th>Bin Code</th>
+                <th>Item</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="binItems.length <= 0">
+                <td colspan="5">No data.</td>
+            </tr>
+            <tr ng-show="binItems.length > 0" ng-repeat="binItem in binItems">
+                <td class="action-button">
+                <span ng-click="onEdit(binItem)" class="btn btn-info btn-sm btn-condensed">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Edit
+                </span>
+                <span ng-click="onDelete(binItem)" class="btn btn-danger btn-sm btn-condensed">
+                    <i class="fa fa-trash-o"></i>
+                    Delete
+                </span>
+                </td>
+                <td>{{binItem.Bin.BinCode}}</td>
+                <td>{{binItem.Item.ItemCode}} - {{binItem.Item.ItemName}}</td>
+            </tr>
+            </tbody>
+            <tfoot ng-show="binItems.length > 0">
+            <tr>
+                <th colspan="7">
+                    <uib-pagination total-items="searchQuery.TotalData" items-per-page="searchQuery.DataPerPage" ng-model="searchQuery.Page" ng-change="fetchData()"
+                                    max-size="10" class="pull-right pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+{
+  "name": "smartshelve",
+  "version": "0.0.0",
+  "main": "index.html",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "jquery": "~2.0",
+    "underscore": "~1.5",
+    "bootstrap": "~3.1",
+    "angular": "~1.4.9",
+    "angular-route": "~1.4.9",
+    "angular-animate": "~1.4.9",
+    "angular-resource": "~1.4.9",
+    "angular-cookies": "~1.4.9",
+    "angular-mocks": "~1.4.9",
+    "angular-ui-utils": "~3.0.0",
+    "angular-bootstrap": "~1.1.1",
+    "moment": "momentjs#^2.11.2",
+    "less.js": "~1.6",
+    "font-awesome": "~4.5.0",
+    "flat-admin-bootstrap-templates": "~2.1.2",
+    "angular-loading-bar": "~0.8.0",
+    "angular-local-storage": "^0.2.3",
+    "cropme": "angular-cropme#^0.4.1",
+    "signalr": "~2.2.0",
+    "angular-chart.js": "^0.8.8",
+    "ngDraggable": "^0.1.8",
+    "angular-toastr": "^1.7.0"
+  },
+  "resolutions": {
+    "angular": "~1.4.9"
+  }
+}

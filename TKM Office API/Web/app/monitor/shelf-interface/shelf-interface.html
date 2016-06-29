@@ -1,0 +1,63 @@
+<script src="../signalr/hubs"></script>
+<div class="col-md-12" ng-controller="ShelfInterfaceCtrl">
+    <div style="text-align: center;">
+        <table class="shelf-interface-main-table">
+            <tr>
+                <td></td>
+                <td class="shelf-interface-shelf-header">
+                    <div class="shelf-title border-effect">Shelve {{shelf.ShelveCode}}</div>
+                    <table>
+                        <tr>
+                            <td ng-repeat="module in shelf.Modules" class="shelf-interface-module-header">
+                                <div class="module-title">Module {{module.ReaderModuleCode}}</div>
+                                <table>
+                                    <tr>
+                                        <td ng-repeat="module in shelf.Modules" class="shelf-interface-bin-header">
+                                            <table width="100%" class="shelf-interface-table">
+                                                <tr>
+                                                    <td ng-repeat="bin in module.Bins" style="vertical-align: top;">
+                                                        <div class="bin-title shelf-bin-item-name">
+                                                            Bin {{bin.BinCode}}
+                                                        </div>
+                                                        <div><img src="/Content/Item/{{bin.Item.ItemId}}/{{bin.Item.ImageFilename}}" /></div>
+                                                        <div style="border-top:solid 1px black;margin-top: 5px;">&nbsp;</div>
+                                                        <div class="shelf-bin-item-name">{{bin.Item.ItemName}}</div>
+                                                        <div class="shelf-bin-item-brand">{{bin.Item.Brand.BrandName}}</div>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: bold;">Inventory</td>
+                <td ng-repeat="module in shelf.Modules">
+                    <table border="1" class="shelf-interface-table-qty-info">
+                        <tr>
+                            <td ng-repeat="bin in module.Bins">
+                                {{bin.InventoryQty}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="text-align: right;font-weight: bold;">Sales</td>
+                <td ng-repeat="module in shelf.Modules">
+                    <table border="1" class="shelf-interface-table-qty-info">
+                        <tr>
+                            <td ng-repeat="bin in module.Bins">
+                                {{bin.SalesQty}}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

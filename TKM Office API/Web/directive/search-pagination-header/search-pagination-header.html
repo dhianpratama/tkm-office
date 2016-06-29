@@ -1,0 +1,20 @@
+<div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" ng-model="searchQuery.Search.Keyword" ng-keypress="onKeyPress($event)" class="form-control" placeholder="Search for...">
+            <span class="input-group-btn">
+                <button class="btn btn-info" type="button" ng-click="onSearchFunction()">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="pull-right form-inline form-group">
+            Items per Page
+            <select class="form-control" ng-model="searchQuery.DataPerPage" ng-options="page for page in perPagesOptions" ng-change="onSearchFunction()">
+
+            </select>
+        </div>
+    </div>
+</div>

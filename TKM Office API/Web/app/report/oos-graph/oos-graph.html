@@ -1,0 +1,130 @@
+<div class="col-md-12" ng-controller="OosGraphCtrl">
+    <div class="form-horizontal">
+        <uib-accordion>
+            <uib-accordion-group is-open="advSearchPanel.open">
+                <uib-accordion-heading>
+                    <div style="font-size: 80%;">Advanced Search <i class="pull-right fa" ng-class="{'fa-chevron-down': advSearchPanel.open, 'fa-chevron-right': !advSearchPanel.open}"></i></div>
+                </uib-accordion-heading>
+                <div class="row form-group">
+                    <div class="col-md-1">
+                        <label class="control-label">Location</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="l.LocationId as l.Description for l in locations" ng-model="param.LocationId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label">Shelve</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="s.ShelveId as s.ShelveCode for s in shelves" ng-model="param.ShelveId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label">Module</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="m.ReaderModuleId as m.ReaderModuleCode for m in modules" ng-model="param.ReaderModuleId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-md-1">
+                        <label class="control-label">Bin</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="b.BinId as b.BinCode for b in bins" ng-model="param.BinId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label">Item</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="i.ItemId as i.ItemCode + ' - ' + i.ItemName  for i in items" ng-model="param.ItemId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+                        <label class="control-label">Brand</label>
+                    </div>
+                    <div class="col-md-3">
+                        <select ng-options="b.BrandId as b.BrandName for b in brands" ng-model="param.BrandId" class="form-control">
+                            <option value="null">[ALL]</option>
+                        </select>
+                    </div>
+                </div>
+
+            </uib-accordion-group>
+        </uib-accordion>
+
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Date From</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateFrom" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtFrom.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtFrom.opened = !dtFrom.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Date To</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateTo" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtTo.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtTo.opened = !dtTo.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Scale Type</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="s.value as s.text for s in scaleTypeOptions" ng-model="param.ScaleType" class="form-control">
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-8"></div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary pull-right" ng-click="fetchData()">
+                    Show Graph &nbsp;
+                    <i class="fa fa-line-chart"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-2"></div>
+        <div class="col-xs-8">
+            <div class="card primary">
+                <div class="card-jumbotron no-padding">
+                    <canvas height="100" class="chart chart-line" chart-data="oos.Data" chart-options="chartOptions" chart-labels="oos.Labels" chart-legend="true" chart-series="oos.Series"></canvas>
+                </div>
+                <div class="card-body half-padding">
+                    <h4 class="float-left no-margin font-weight-100">Total Out Of Stock Period</h4>
+                    <h4 class="float-right no-margin font-weight-100">{{oos.HourPeriod}} Hour {{oos.MinutePeriod}} Minutes</h4>
+                    <div class="clear-both"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

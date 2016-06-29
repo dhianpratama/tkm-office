@@ -1,0 +1,57 @@
+<div class="col-md-12" ng-controller="BinListCtrl">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="pull-left form-inline">
+                <button class="btn btn-success pull-left" ng-click="onAdd()">
+                    <i class="fa fa-plus-square"></i>
+                    Add
+                </button>
+            </div>
+        </div>
+        <div search-pagination-header search-query="searchQuery" on-search-function="fetchData()"></div>
+    </div>
+    <div class="row">
+        <table class="datatable table table-striped table-bordered data-grid" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th class="action-button"></th>
+                <th>Code</th>
+                <th>Empty Distance</th>
+                <th>Reader Module</th>
+                <th>Remarks</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="bins.length <= 0">
+                <td colspan="5">No data.</td>
+            </tr>
+            <tr ng-show="bins.length > 0" ng-repeat="bin in bins">
+                <td class="action-button">
+                <span ng-click="onEdit(bin)" class="btn btn-info btn-sm btn-condensed">
+                    <i class="fa fa-pencil-square-o"></i>
+                    Edit
+                </span>
+                <span ng-click="onDelete(bin)" class="btn btn-danger btn-sm btn-condensed">
+                    <i class="fa fa-trash-o"></i>
+                    Delete
+                </span>
+                </td>
+                <td>{{bin.BinCode}}</td>
+                <td>{{bin.EmptyDistance}}</td>
+                <td>{{bin.ReaderModule.ReaderModuleCode}}</td>
+                <td>{{bin.Remarks}}</td>
+            </tr>
+            </tbody>
+            <tfoot ng-show="bins.length > 0">
+            <tr>
+                <th colspan="5">
+                    <uib-pagination total-items="searchQuery.TotalData" items-per-page="searchQuery.DataPerPage" ng-model="searchQuery.Page" ng-change="fetchData()"
+                                    max-size="10" class="pull-right pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>

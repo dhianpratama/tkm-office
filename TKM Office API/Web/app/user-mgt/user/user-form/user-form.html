@@ -1,0 +1,94 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close pull-right" ng-click="$dismiss()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Update User Data</h4>
+    </div>
+    <div class="modal-body">
+        <uib-tabset>
+            <uib-tab>
+                <uib-tab-heading>
+                    User Data
+                </uib-tab-heading>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txtUsername" class="col-sm-3 control-label">Username</label>
+                        <div class="col-sm-9">
+                            <input id="txtUsername" type="text" class="form-control" ng-model="user.UserName" ng-disabled>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFullName" class="col-sm-3 control-label">Full Name</label>
+                        <div class="col-sm-9">
+                            <input id="txtFullName" type="text" class="form-control" ng-model="user.FullName">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Institution</label>
+                        <div class="col-sm-9">
+                            <div class="panel panel-defaut">
+                                <div class="panel-body">
+                                    <div class="checkbox3 checkbox-success checkbox-round" ng-repeat="inst in user.Institutions">
+                                        <input type="checkbox" id="checkbox-{{inst.InstitutionId}}" ng-model="inst.IsActive" ng-change="onInstitutionChange(inst)">
+                                        <label for="checkbox-{{inst.InstitutionId}}">
+                                            {{inst.Institution.InstitutionName}}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Default Institution</label>
+                        <div class="col-sm-9">
+                            <select class="form-control"
+                                    ng-model="user.DefaultInstitutionId"
+                                    ng-options="inst.InstitutionId as inst.Institution.InstitutionName for inst in DefaultInstitutionOptions">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary form-control" ng-click="onSave()">
+                                Update Data
+                                <i class="fa fa-floppy-o"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </uib-tab>
+            <uib-tab>
+                <uib-tab-heading>
+                    Reset Password
+                </uib-tab-heading>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="txtPassword" class="col-sm-3 control-label">New Password</label>
+                        <div class="col-sm-9">
+                            <input id="txtPassword" type="password" class="form-control" ng-model="user.Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtConfirmPassword" class="col-sm-3 control-label">Confirm Password</label>
+                        <div class="col-sm-9">
+                            <input id="txtConfirmPassword" type="password" class="form-control" ng-model="user.ConfirmPassword">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-10"></div>
+                        <div class="col-sm-2">
+                            <button type="button" class="btn btn-primary form-control" ng-click="onResetPassword()">
+                                Confirm
+                                <i class="fa fa-check"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </form>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="$dismiss()">Close</button>
+    </div>
+</div>

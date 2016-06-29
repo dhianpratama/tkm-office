@@ -1,0 +1,39 @@
+<div>
+    <div class="modal-header">
+        <button type="button" class="close pull-right" ng-click="$dismiss()" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Shelve Data</h4>
+    </div>
+    <div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="txtShelveCode" class="col-sm-2 control-label">Code</label>
+                <div class="col-sm-10">
+                    <input id="txtShelveCode" type="text" class="form-control" ng-model="shelve.ShelveCode">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtMaxReaderModule" class="col-sm-2 control-label">No. of Stack/Layer</label>
+                <div class="col-sm-10">
+                    <input id="txtMaxReaderModule" type="number" class="form-control" ng-model="shelve.MaxReaderModule">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Location</label>
+                <div class="col-sm-10">
+                    <select ng-options="l.LocationId as l.Description for l in locations" ng-model="shelve.LocationId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtRemarks" class="col-sm-2 control-label">Remarks</label>
+                <div class="col-sm-10">
+                    <input id="txtRemarks" type="text" class="form-control" ng-model="shelve.Remarks">
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+        <button ng-if="shelve.ShelveId && shelve.openFromBuilder" class="btn btn-danger" ng-click="onDelete()">Delete</button>
+        <button type="button" class="btn btn-primary" ng-click="onSave()">Save</button>
+    </div>
+</div>

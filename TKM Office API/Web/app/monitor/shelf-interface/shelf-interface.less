@@ -1,0 +1,78 @@
+//.shelf-interface-table{table-layout:fixed;}
+//.shelf-interface-table>tr>*:nth-last-child(2)~*{ width:50%}
+//.shelf-interface-table>tr>*:nth-last-child(3)~*{ width:33.3%}
+//.shelf-interface-table>tr>*:nth-last-child(4)~*{ width:25%}
+//.shelf-interface-table>tr>*:nth-last-child(5)~*{ width:20%}
+//.shelf-interface-table>tr>*:nth-last-child(6)~*{ width:16.6%}
+//.shelf-interface-table>tr>*:nth-last-child(7)~*{ width:14.3%}
+//.shelf-interface-table>tr>*:nth-last-child(8)~*{ width:12.5%}
+.shelf-interface-main-table{font-family: 'Roboto Condensed', sans-serif;margin-left:auto;margin-right:auto;}
+.shelf-interface-main-table td {padding: 5px;}
+
+.shelf-interface-shelf-header {
+  background: url("/Web/content/images/shelf/shelf_bg.png");
+  background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  //-webkit-box-shadow:5px 2px 2px #bbb;
+}
+
+.border-effect
+{
+  position:relative;
+  box-shadow:0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+.border-effect:before, .border-effect:after
+{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  box-shadow:0 0 20px rgba(0,0,0,0.8);
+  top:0;
+  bottom:0;
+  left:10px;
+  right:10px;
+  border-radius:100px / 10px;
+}
+.border-effect:after
+{
+  right:10px;
+  left:auto;
+  transform:skew(8deg) rotate(3deg);
+}
+
+.shelf-title{font-size: 2em;padding:5px;font-weight: bolder;}
+
+.shelf-interface-module-header {background-image: url("/Web/content/images/shelf/module_bg.png");border-radius: 5px;}
+.module-title{font-size: 1.5em;padding:3px;font-weight: bold;color:#ececec;}
+
+.shelf-interface-bin-header {background: -webkit-linear-gradient(top, #ececec, #909090);  }
+.bin-title{font-size: 1em;padding:2px;}
+
+.shelf-interface-table td{
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.shelf-bin-item-name{
+  text-align: left;
+  font-weight: bold;
+  text-shadow: 0px 1px 1px #4d4d4d;
+  color: black;
+}
+
+.shelf-bin-item-brand{
+  text-align: left;
+  font-size: 0.85em;
+  color:#0e0e0e;
+}
+
+
+.shelf-interface-table-qty-info td, .shelf-interface-table td{width: 165px;}
+
+.shelf-interface-table-qty-info{
+  margin-left: 10px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+}

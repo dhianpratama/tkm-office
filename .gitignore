@@ -1,0 +1,19 @@
+Core/bin
+Core/obj
+EF/bin
+EF/Migrations
+EF/obj
+packages
+Service/bin
+Service/obj
+TKM Office API/bin
+TKM Office API/obj
+*.user
+TKM Office.v11.suo
+TKM Office API/Web/bower_components
+TKM Office API/Web/node_modules
+TKM Office API/Web/.idea
+TKM Office API/App_Data
+SignalR/bin
+SignalR/obj
+TKM Office API/Content/Transaction/temp

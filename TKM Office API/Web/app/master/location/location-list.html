@@ -1,0 +1,83 @@
+<script type="text/ng-template" id="descendant_renderer.html">
+    <input type="checkbox" id="{{ descendant.LocationId}}" ng-model="descendant.ShowDescendant" ng-if="descendant.Descendants.length > 0" />
+    <label for="{{ descendant.LocationId}}" ng-if="descendant.Descendants.length > 0">
+        <i class="fa fa-{{ descendant.Icon}}">&nbsp;</i>
+        {{ descendant.LocationCode }}<span class="help-inline">({{ descendant.LocationName }})</span>
+    </label>
+    <span id="{{ descendant.LocationId }}" ng-if="descendant.Descendants.length <= 0">
+        <i class="fa fa-{{ descendant.Icon}}">&nbsp;</i>
+        {{ descendant.LocationCode }}<span class="help-inline">({{ descendant.LocationName }})</span>
+    </span>
+    <span class="btn-sm btn-primary">
+        <span ng-click="onAdd(descendant.LocationId)">
+            <i class="fa fa-plus-square-o"></i>
+            Location
+        </span>
+        &nbsp; | &nbsp;
+        <span ng-click="onEdit(descendant)">
+            <i class="fa fa-pencil"></i>
+        </span>
+        &nbsp;
+        <span ng-click="onDelete(descendant)">
+            <i class="fa fa-times"></i>
+        </span>
+    </span>
+    <ul ng-if="descendant.ShowDescendant">
+        <li ng-repeat="descendant in descendant.Descendants" ng-include="'descendant_renderer.html'"></li>
+    </ul>
+</script>
+
+<script type="text/ng-template" id="root_renderer.html">
+    <input type="checkbox" id="{{ location.LocationId }}" ng-model="location.ShowDescendant" />
+    <label for="{{ location.LocationId }}">
+        <i class="fa fa-{{location.Icon}}">&nbsp;</i>
+        {{ location.LocationCode }}<span class="help-inline">({{ location.LocationName }})</span>
+    </label>
+    <span class="btn-sm btn-primary">
+        <span ng-click="onAdd(location.LocationId)">
+            <i class="fa fa-plus-square-o"></i>
+            Location
+        </span>
+        &nbsp; | &nbsp;
+        <span ng-click="onEdit(location)">
+            <i class="fa fa-pencil"></i>
+        </span>
+        &nbsp;
+        <span ng-click="onDelete(location)">
+            <i class="fa fa-times"></i>
+        </span>
+    </span>
+    <ul ng-if="location.ShowDescendant">
+        <li ng-repeat="descendant in location.Descendants" ng-include="'descendant_renderer.html'"></li>
+    </ul>
+</script>
+<div class="col-md-12" ng-controller="LocationListCtrl">
+    <div class="row">
+
+        <div>
+            <!--<button class="btn btn-small btn-primary" ng-click="onRefresh()">-->
+                <!--<i class="fa-refresh"></i>-->
+            <!--</button>-->
+            <button class="btn btn-small btn-primary" ng-click="onAdd(null)">
+                <i class="fa fa-plus-circle"></i>
+                Add Root Location
+            </button>
+            <!--<button class="btn btn-small btn-success" ng-click="getTemplate()" target="_blank">-->
+                <!--<i class="fa-download"></i>Download Template-->
+            <!--</button>-->
+            <!--<button class="btn btn-small btn-info" ng-click="uploadTemplate()">-->
+                <!--<i class="fa-upload"></i>Upload Template-->
+            <!--</button>-->
+        </div>
+        <div>
+            <div class="css-treeview">
+                <ul>
+                    <li ng-show="!locations.length">No Data</li>
+                    <li ng-repeat="location in locations" ng-include="'root_renderer.html'"></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>

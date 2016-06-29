@@ -1,0 +1,21 @@
+<script src="../signalr/hubs"></script>
+<div class="col-md-12" ng-controller="DashboardCtrl">
+    <div class="row">
+        <div class="col-sm-11 col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="card primary">
+                        <div class="card-jumbotron no-padding">
+                            <canvas height="100" class="chart chart-line" chart-data="brandQuantity.data" chart-options="chartOptions" chart-labels="brandQuantity.labels" chart-legend="true" chart-series="brandQuantity.series"></canvas>
+                        </div>
+                        <div class="card-body half-padding">
+                            <h4 class="float-left no-margin font-weight-300">Realtime Hourly Sales</h4>
+                            <h2 class="float-right no-margin font-weight-300">{{brandQuantity.total}}</h2>
+                            <div class="clear-both"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

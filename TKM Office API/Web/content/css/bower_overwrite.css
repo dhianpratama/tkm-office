@@ -1,0 +1,12 @@
+.side-menu .navbar-header {
+  margin-bottom: 0px;
+}
+
+.btn {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.row > [class*="col-"] {
+    margin-bottom: 0px;
+}

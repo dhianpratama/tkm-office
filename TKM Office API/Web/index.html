@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html ng-app="SmartShelve">
+<head>
+    <title>TKM Office</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link href="app.less" type="text/css" rel="stylesheet/less">
+    <link href="bower_components/flat-admin-bootstrap-templates/css/style.css" type="text/css" rel="stylesheet">
+    <link href="bower_components/flat-admin-bootstrap-templates/css/themes/flat-green.css" type="text/css"
+        rel="stylesheet">
+    <link href="bower_components/angular-loading-bar/build/loading-bar.min.css" type="text/css" rel="stylesheet">
+    <link href="bower_components/angular-chart.js/dist/angular-chart.css" type="text/css" rel="stylesheet">
+    <link href="bower_components/angular-toastr/dist/angular-toastr.min.css" type="text/css" rel="stylesheet">
+    <link href="content/css/bower_overwrite.css" type="text/css" rel="stylesheet">
+</head>
+<body class="flat-green">
+
+    <!-- Livereload script for development only (stripped during dist build) -->
+    <!--<script src="http://localhost:35729/livereload.js" data-concat="false"></script>-->
+
+    <!-- JS from Bower Components -->
+    <script src="bower_components/less.js/dist/less-1.6.2.js" data-concat="false"></script>
+    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-scroll/dist/ui-scroll.min.js"></script>
+    <script src="bower_components/angular-ui-scrollpoint/dist/scrollpoint.min.js"></script>
+    <script src="bower_components/angular-ui-event/dist/event.min.js"></script>
+    <script src="bower_components/angular-ui-mask/dist/mask.min.js"></script>
+    <script src="bower_components/angular-ui-validate/dist/validate.min.js"></script>
+    <script src="bower_components/angular-ui-indeterminate/dist/indeterminate.min.js"></script>
+    <script src="bower_components/angular-ui-uploader/dist/uploader.min.js"></script>
+    <script src="bower_components/angular-ui-utils/index.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-superswipe/superswipe.js"></script>
+    <script src="bower_components/signalr/jquery.signalR.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="bower_components/cropme/cropme.js"></script>
+    <script src="bower_components/ngDraggable/ngDraggable.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+
+
+    <!-- Javascript Libs for Theme -->
+    <script type="text/javascript" src="bower_components/bootstrap-switch/dist/js/bootstrap-switch.min.js"></script>
+    <script type="text/javascript" src="bower_components/matchHeight/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="bower_components/datatables/media/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/select2/dist/js/select2.full.min.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src/ace.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src/mode-html.js"></script>
+    <script type="text/javascript" src="bower_components/ace-builds/src/theme-github.js"></script>
+    <script type="text/javascript" src="bower_components/flat-admin-bootstrap-templates/dist/js/app.js"></script>
+
+    <script type="text/javascript" src="bower_components/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script type="text/javascript" src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+
+    <!-- Add New Bower Component JS Above -->
+
+
+    <!-- Main App JS -->
+    <script src="app.js"></script>
+    <script src="factory/internal-factory.js"></script>
+    <script src="factory/factory.js"></script>
+    <script src="internal/index.js"></script>
+    <script src="internal/navigation.js"></script>
+    <script src="app/master/institution/institution-list.js"></script>
+    <script src="app/master/institution/institution-form/institution-form.js"></script>
+    <script src="app/master/uom/uom-list.js"></script>
+    <script src="app/master/uom/uom-form/uom-form.js"></script>
+    <script src="app/master/location-type/location-type-list.js"></script>
+    <script src="app/master/location-type/location-type-form/location-type-form.js"></script>
+    <script src="app/master/location/location-list.js"></script>
+    <script src="app/master/location/location-form/location-form.js"></script>
+    <script src="app/master/shelve/shelve-list.js"></script>
+    <script src="app/master/reader-module/reader-module-list.js"></script>
+    <script src="app/master/bins/bin-list.js"></script>
+    <script src="app/master/shelve/shelve-form/shelve-form.js"></script>
+    <script src="app/master/reader-module/reader-module-form/reader-module-form.js"></script>
+    <script src="app/master/bins/bin-form/bin-form.js"></script>
+    <script src="app/dashboard/dashboard.js"></script>
+    <script src="app/master/brand/brand-list.js"></script>
+    <script src="app/master/brand/brand-form/brand-form.js"></script>
+    <script src="app/sys/config/config.js"></script>
+    <script src="app/tools/shelve-builder/shelve-builder.js"></script>
+    <script src="directive/search-pagination-header/search-pagination-header.js"></script>
+    <script src="directive/al-click/al-click.js"></script>
+    <script src="internal/breadcrumb.js"></script>
+    <script src="internal/change-institution/change-institution.js"></script>
+    <script src="app/user-mgt/user/user-list.js"></script>
+    <script src="app/user-mgt/role/role-list.js"></script>
+    <script src="app/user-mgt/user-role/user-role-list.js"></script>
+    <script src="app/user-mgt/user/user-form/user-form.js"></script>
+    <script src="app/user-mgt/user/create-user-form/create-user-form.js"></script>
+    <script src="app/monitor/qty-movement/qty-movement-monitor.js"></script>
+    <script src="filter/date-filter.js"></script>
+    <script src="app/monitor/qty-balance/qty-balance.js"></script>
+    <script src="app/under-construction/under-construction.js"></script>
+    <script src="app/report/sales-general/sales-general.js"></script>
+    <script src="app/report/sales-oos/sales-oos.js"></script>
+    <script src="app/monitor/shelf-interface/shelf-interface.js"></script>
+    <script src="app/report/oos-inquiry/oos-inquiry.js"></script>
+    <script src="app/report/oos-graph/oos-graph.js"></script>
+    <script src="app/report/sales-graph/sales-graph.js"></script>
+    <script src="app/transaction/transaction.js"></script>
+    <script src="app/transaction/transaction-form/transaction-form.js"></script>
+    <script src="app/transaction-report/transaction-report.js"></script>
+    <!-- Add New Component JS Above -->
+
+
+    <div id="content" class="app-container">
+        <div class="row content-container">
+            <nav class="navbar navbar-default navbar-fixed-top navbar-top">
+                <div class="container-fluid">
+                    <div class="navbar-header" ng-controller="BreadcrumbCtrl">
+                        <button type="button" class="navbar-expand-toggle">
+                            <i class="fa fa-bars icon"></i>
+                        </button>
+                        <ol class="breadcrumb navbar-breadcrumb">
+                            <li ng-repeat="crumb in crumbs">{{crumb}}</li>
+                        </ol>
+                        <button type="button" class="navbar-right-expand-toggle pull-right visible-xs">
+                            <i class="fa fa-th icon"></i>
+                        </button>
+                    </div>
+                    <ul class="nav navbar-nav navbar-right" ng-controller="IndexCtrl">
+                        <li class="dropdown">
+                            <a ng-click="onChangeInstitution()" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">Institution : {{user.CurrentInstitution.InstitutionName}} <span><i class="fa fa-cog"></i></span>
+                            </a>
+                        </li>
+                        <li class="dropdown profile">
+                            <a ng-click="toggleMenu = !toggleMenu;" class="dropdown-toggle" data-toggle="dropdown"
+                                role="button" aria-expanded="false">{{user.UserName}} <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" uib-collapse="!toggleMenu">
+                                <li>
+                                    <div class="profile-info">
+                                        <h4 class="username">{{user.FullName}}</h4>
+                                        <div class="btn-group margin-bottom-2x" role="group">
+                                            <button type="button" class="btn btn-default" ng-click="editProfile()">
+                                                <i class="fa fa-user"></i>Profile
+                                            </button>
+                                            <button type="button" class="btn btn-default" ng-click="logOut()">
+                                                <i
+                                                    class="fa fa-sign-out"></i>Logout
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="side-menu sidebar-inverse" ng-controller="NavigationCtrl">
+                <nav class="navbar navbar-default" role="navigation">
+                    <div class="side-menu-container">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="#">
+                                <div class="icon fa fa-archive"></div>
+                                <div class="title">TKM Office</div>
+                            </a>
+                            <button type="button" class="navbar-expand-toggle pull-right visible-xs">
+                                <i class="fa fa-times icon"></i>
+                            </button>
+                        </div>
+                        <ul class="nav navbar-nav">
+                            <li class="active">
+                                <a href="index.html#/tkm/transaction">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Transaction</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" href="index.html#/tkm/report/transactionReport">
+                                    <span class="icon fa fa-area-chart"></span>
+                                    <span class="title">Report</span>
+                                </a>
+                            </li>
+                            <!--<li class="active">
+                                <a href="index.html">
+                                    <span class="icon fa fa-tachometer"></span><span class="title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" ng-click="toggleMenu.masterData = !toggleMenu.masterData">
+                                    <span class="icon fa fa-table"></span>
+                                    <span class="title">Master Data Setup</span>
+                                </a>
+
+                                <div id="dropdown-menu1" class="panel-collapse collapse"
+                                    uib-collapse="!toggleMenu.masterData">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="index.html#/master/institution">Institution</a></li>
+                                            <li><a href="index.html#/master/location-type">Location Type</a></li>
+                                            <li><a href="index.html#/master/location">Location</a></li>
+                                            <li><a href="index.html#/master/uom">UOM</a></li>
+                                            <li><a href="index.html#/master/brand">Brand</a></li>
+                                            <li><a href="index.html#/master/Transaction">Transaction</a></li>
+                                            <li><a href="index.html#/master/shelve">Shelve</a></li>
+                                            <li><a href="index.html#/master/reader-module">Reader Module</a></li>
+                                            <li><a href="index.html#/master/bin">Bin</a></li>
+                                            <li><a href="index.html#/tools/shelve-builder">Shelve Builder</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" ng-click="toggleMenu.transMonitor = !toggleMenu.transMonitor">
+                                    <span class="icon fa fa-desktop"></span>
+                                    <span class="title">Transaction Monitor</span>
+                                </a>
+
+                                <div id="dropdown-menu2" class="panel-collapse collapse"
+                                    uib-collapse="!toggleMenu.transMonitor">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="index.html#/monitor/qty-movement">Sales Monitor</a></li>
+                                            <li><a href="index.html#/monitor/qty-balance">Inventory</a></li>
+                                            <li><a href="index.html#/monitor/shelf-interface">Shelf Interface</a></li>
+                                            <li><a href="index.html#/under-construction">Raw Data</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>-->
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" ng-click="toggleMenu.report = !toggleMenu.report">
+                                    <span class="icon fa fa-area-chart"></span>
+                                    <span class="title">Report</span>
+                                </a>
+
+                                <div id="dropdown-menu3" class="panel-collapse collapse" uib-collapse="!toggleMenu.report">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="index.html#/report/sales-general">Sales Report</a></li>
+                                            <li><a href="index.html#/report/sales-graph">Sales Graph</a></li>
+                                            <li><a href="index.html#/report/sales-out-of-stock">Out of Stock Report</a></li>
+                                            <li><a href="index.html#/report/oos-inquiry">Out of Stock Data Inquiry</a></li>
+                                            <li><a href="index.html#/report/oos-graph">Out of Stock Graph</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" ng-click="toggleMenu.user = !toggleMenu.user">
+                                    <span class="icon fa fa-users"></span>
+                                    <span class="title">User Management</span>
+                                </a>
+
+                                <div id="dropdown-menu4" class="panel-collapse collapse"
+                                    uib-collapse="!toggleMenu.user">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="index.html#/user-mgt/user">Master User</a></li>
+                                            <!--<li><a href="index.html#/under-construction">Role & ACL Management</a></li>
+                                            <li><a href="index.html#/under-construction">User Role Management</a></li>-->
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <!--<li class="panel panel-default dropdown">
+                                <a data-toggle="collapse" ng-click="toggleMenu.setting = !toggleMenu.setting">
+                                    <span class="icon fa fa-cogs"></span>
+                                    <span class="title">Application Setting</span>
+                                </a>
+
+                                <div id="dropdown-menu99" class="panel-collapse collapse"
+                                    uib-collapse="!toggleMenu.setting">
+                                    <div class="panel-body">
+                                        <ul class="nav navbar-nav">
+                                            <li><a href="index.html#/under-construction">Application Parameters</a></li>
+                                            <li><a href="index.html#/under-construction">Environment Setting</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>-->
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                </nav>
+            </div>
+            <!-- Main Content -->
+            <div class="container-fluid">
+                <div class="side-body">
+                    <div ng-view>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="app-footer">
+            <div class="wrapper">
+                <span class="pull-right">2.1 <a href="#"><i class="fa fa-long-arrow-up"></i></a></span>© 2016 Copyright.
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+</html>

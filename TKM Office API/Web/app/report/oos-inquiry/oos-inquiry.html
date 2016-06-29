@@ -1,0 +1,147 @@
+<div class="col-md-12" ng-controller="OosInquiryCtrl">
+    <div class="form-horizontal">
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Location</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="l.LocationId as l.Description for l in locations" ng-model="param.LocationId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Shelve</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="s.ShelveId as s.ShelveCode for s in shelves" ng-model="param.ShelveId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Module</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="m.ReaderModuleId as m.ReaderModuleCode for m in modules" ng-model="param.ReaderModuleId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Bin</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="b.BinId as b.BinCode for b in bins" ng-model="param.BinId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Item</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="i.ItemId as i.ItemCode + ' - ' + i.ItemName  for i in items" ng-model="param.ItemId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Brand</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="b.BrandId as b.BrandName for b in brands" ng-model="param.BrandId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Date From</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateFrom" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtFrom.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtFrom.opened = !dtFrom.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-md-1">
+                <label class="control-label">Date To</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateTo" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtTo.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtTo.opened = !dtTo.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-8"></div>
+            <div class="col-md-3">
+                <div class="pull-right form-inline form-group">
+                    Items per Page
+                    <select class="form-control" ng-model="searchQuery.DataPerPage" ng-options="page for page in perPagesOptions" ng-change="fetchData()">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <button type="button" class="btn btn-primary pull-right" ng-click="fetchData()">
+                    Search &nbsp;
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="datatable table table-striped table-bordered data-grid" cellspacing="0" width="100%">
+            <thead>
+            <tr>
+                <th>Location</th>
+                <th>Shelve</th>
+                <th>Module</th>
+                <th>Bin</th>
+                <th>Item</th>
+                <th>Brand</th>
+                <th>Start OOS</th>
+                <th>End OOS</th>
+                <th>Duration</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-show="oos.length <= 0">
+                <td colspan="9">No data.</td>
+            </tr>
+            <tr ng-show="oos.length > 0" ng-repeat="data in oos">
+                <td>{{data.LocationName}}</td>
+                <td>{{data.ShelveCode}}</td>
+                <td>{{data.ReaderModuleCode}}</td>
+                <td>{{data.BinCode}}</td>
+                <td>{{data.ItemName}} [{{data.ItemCode}}]</td>
+                <td>{{data.BrandName}}</td>
+                <td>{{data.OutOfStockStartDateTime | momentDateFilter : "DD/MM/YYYY HH:mm:ss"}}</td>
+                <td>
+                    <span ng-show="data.OutOfStockStartEndDateTime != null">{{data.OutOfStockStartEndDateTime | momentDateFilter : "DD/MM/YYYY HH:mm:ss"}}</span>
+                    <span ng-show="data.OutOfStockStartEndDateTime == null">Still Ongoing...</span>
+                </td>
+                <td>{{data.Hours}} hr, {{data.Minutes}} mins</td>
+            </tr>
+            </tbody>
+            <tfoot ng-show="movements.length > 0">
+            <tr>
+                <th colspan="9">
+                    <uib-pagination total-items="searchQuery.TotalData" items-per-page="searchQuery.DataPerPage" ng-model="searchQuery.Page" ng-change="fetchData()"
+                                    max-size="10" class="pull-right pagination-sm" boundary-link-numbers="true"></uib-pagination>
+                </th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+
+</div>

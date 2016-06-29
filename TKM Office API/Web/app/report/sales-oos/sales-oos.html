@@ -1,0 +1,55 @@
+<div class="col-md-12" ng-controller="SalesOosCtrl">
+    <div class="form-horizontal">
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Location</label>
+            </div>
+            <div class="col-md-3">
+                <select ng-options="l.LocationId as l.Description for l in locations" ng-model="param.LocationId" class="form-control">
+                    <option value="null">[ALL]</option>
+                </select>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Date From</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateFrom" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtFrom.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtFrom.opened = !dtFrom.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-1">
+                <label class="control-label">Date To</label>
+            </div>
+            <div class="col-md-3">
+                <p class="input-group">
+                    <input type="text" class="form-control" ng-model="param.DateTo" ng-required="true"
+                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtTo.opened" max-date="today" close-text="Close" />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="dtTo.opened = !dtTo.opened">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2">
+                <button type="button" class="btn btn-primary" ng-click="onGenerateReport()">
+                    Generate Report &nbsp;
+                    <i class="fa fa-file-text-o"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>

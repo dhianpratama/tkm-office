@@ -1,0 +1,50 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{D35B53C0-178A-4558-B90C-4DA3AB5A0DAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF", "EF\EF.csproj", "{90E19D74-87FC-44DD-BE73-A053A26D9090}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service", "Service\Service.csproj", "{EE80F061-CBCF-4CCD-9663-ECCA16E61C01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TKM_Office_API", "TKM Office API\TKM_Office_API.csproj", "{52DA449E-EBB7-4E8C-823D-7CF101AF6E41}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C575DA00-3E18-44F4-84A9-E201DA7AF142}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalR", "SignalR\SignalR.csproj", "{B1DD9916-E054-485C-BF3A-F80E28586088}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D35B53C0-178A-4558-B90C-4DA3AB5A0DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D35B53C0-178A-4558-B90C-4DA3AB5A0DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D35B53C0-178A-4558-B90C-4DA3AB5A0DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D35B53C0-178A-4558-B90C-4DA3AB5A0DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90E19D74-87FC-44DD-BE73-A053A26D9090}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90E19D74-87FC-44DD-BE73-A053A26D9090}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90E19D74-87FC-44DD-BE73-A053A26D9090}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90E19D74-87FC-44DD-BE73-A053A26D9090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EE80F061-CBCF-4CCD-9663-ECCA16E61C01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE80F061-CBCF-4CCD-9663-ECCA16E61C01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE80F061-CBCF-4CCD-9663-ECCA16E61C01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE80F061-CBCF-4CCD-9663-ECCA16E61C01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52DA449E-EBB7-4E8C-823D-7CF101AF6E41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52DA449E-EBB7-4E8C-823D-7CF101AF6E41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52DA449E-EBB7-4E8C-823D-7CF101AF6E41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52DA449E-EBB7-4E8C-823D-7CF101AF6E41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1DD9916-E054-485C-BF3A-F80E28586088}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1DD9916-E054-485C-BF3A-F80E28586088}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1DD9916-E054-485C-BF3A-F80E28586088}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1DD9916-E054-485C-BF3A-F80E28586088}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

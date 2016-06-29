@@ -1,0 +1,67 @@
+<div>
+	<div class="modal-header">
+		<button type="button" class="close pull-right" ng-click="$dismiss()" aria-hidden="true">&times;</button>
+		<h4 class="modal-title">Item Data</h4>
+	</div>
+	<div class="modal-body">
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="txtItemCode" class="col-sm-2 control-label">Code/SKU</label>
+                <div class="col-sm-10">
+                    <input id="txtItemCode" type="text" class="form-control" ng-model="item.ItemCode">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtItemDescription" class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input id="txtItemDescription" type="text" class="form-control" ng-model="item.ItemName">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">UOM</label>
+                <div class="col-sm-10">
+                    <select ng-options="u.UomId as u.UomCode for u in uoms" ng-model="item.UomId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Brand</label>
+                <div class="col-sm-10">
+                    <select ng-options="b.BrandId as b.BrandName for b in brands" ng-model="item.BrandId" class="form-control"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="txtItemThickness" class="col-sm-2 control-label">Thickness (mm) </label>
+                <div class="col-sm-10">
+                    <input id="txtItemThickness" type="text" class="form-control" ng-model="item.ItemThickness">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Item Image</label>
+                <div class="col-sm-10">
+                    <div ng-show="!imageExist">
+                        <cropme width="300"
+                                height="240"
+                                destination-width="150"
+                                destination-height="150"
+                                icon-class=""
+                                ok-label="OK"
+                                cancel-label="Cancel"
+                                src="{{src}}">
+                        </cropme>
+                    </div>
+                    <div ng-show="imageExist">
+                        <img src="{{imgPath}}" />
+                        <button ng-click="onDeleteImage()" class="btn btn-danger btn-xs">
+                            <i class="fa fa-times"></i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-default" ng-click="$dismiss()">Cancel</button>
+		<button type="button" class="btn btn-primary" ng-click="onSave()">Save</button>
+	</div>
+</div>

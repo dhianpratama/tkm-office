@@ -1,0 +1,130 @@
+<div class="col-md-12" ng-controller="ShelveBuilderCtrl">
+    <div class="col-md-2 component">
+
+        <!--<div ng-repeat="comp in components" class="btn btn-info btn-draggable btn-module" ng-drag="true" ng-drag-data="comp">
+            {{comp.title}}
+        </div>-->
+        <select ng-options="s.ShelveId as s.ShelveCode for s in shelves" ng-model="ShelveId" ng-change="onRefresh()" class="form-control">
+            <option value="">Please select shelve</option>
+        </select>
+
+        <div ng-show="ShelveId" class="btn btn-success" ng-click="onEditShelve(shelve)">
+            Edit Shelve
+        </div>
+        <div ng-show="ShelveId" class="btn btn-success" ng-click="save()">
+            Save
+        </div>
+        <span ng-show="saved">Saved Successfully</span>
+        <!--<h4>Components</h4>
+        <div class="btn btn-info btn-draggable btn-module" ng-drag="true" ng-drag-data="module">
+            Module
+        </div>
+        <div class="btn btn-info btn-draggable btn-bin" ng-drag="true" ng-drag-data="bin">
+            Bin
+        </div>-->
+        <input ng-model="search.$" placeholder="Search Item" class="form-control" />
+        <div style="overflow-y:auto;height:90%">
+            <div ng-repeat="item in items | filter:search" class="brand-container">
+                {{item.ItemName}}
+           
+            <div ng-if="!item.imageExist" class="btn btn-draggable btn-brand right" style="border-color: white; line-height: 34px;" ng-drag="true" ng-center-anchor="true" ng-drag-data="item" ng-class="{ 'btn-info': !item.isBin, 'white': item.isBin }">
+                {{item.ItemCode}}
+           
+            </div>
+
+                <img ng-if="item.imageExist" class="btn-draggable btn-brand right" ng-drag="true" ng-center-anchor="true" ng-drag-data="item" src="{{item.imgPath}}" />
+                <br />
+                {{item.Brand.BrandName}}
+            </div>
+        </div>
+    </div>
+    <div ng-drag-clone="">
+        <div ng-if="!clonedData.imageExist" class="btn btn-draggable btn-brand-clone right" style="border-color: white; line-height: 34px;" ng-class="{ 'btn-info': !iclonedData.isBin, 'white': clonedData.isBin }">
+            {{clonedData.ItemCode}}
+           
+        </div>
+        <img ng-if="clonedData.imageExist" class="btn-draggable btn-brand-clone right" ng-src="{{clonedData .imgPath}}">
+    </div>
+    <div class="col-md-10 content">
+        <div ng-show="!ShelveId" class="btn btn-success" ng-click="onAddShelve()">
+            Create New Shelve
+        </div>
+        <table class="custom-table" ng-show="!action">
+            <tr ng-repeat="row in table">
+                <td ng-repeat="cell in row" ng-drop="true"
+                    ng-drop-success="onDropComplete($data , $event, cell.row, cell.column, cell)"
+                    ng-drag-move="onModuleMove($data)"
+                    ng-drag-stop="onModuleStop($data)"
+                    ng-class="{ hover: hovered, white: cell.transparent }"
+                    class="cell">
+                    <div
+                        class="slot clickable"
+                        ng-if="!cell || cell.isSlot"
+                        ng-click="onAddModule(cell.row, cell.column)"
+                        ng-class="{ white: cell.transparent}">
+                        <span ng-if="!cell.transparent" class="btn btn-success">Create New <br/> Module Here</span>
+                        <span ng-if="cell.transparent" class="btn btn-primary">Expand Shelve</span>
+                    </div>
+                    <div class="module clickable" al-click="onEditModule(cell);$event.stopPropagation();" ng-if="cell.ReaderModuleId" ng-drag="moduleDraggable" ng-drag-data="cell">
+                        <div ng-show="!cell.edit" class="col-md-12">
+                            <span class="left module-label">Module Code : {{cell.ReaderModuleCode}}</span>
+                            <!--<i class="fa fa-times right" ng-click="deleteModule(cell)"></i>
+                            <i ng-show="cell.columns.length > 0" class="fa fa-arrow-left right" ng-click="deleteColumn(cell)"></i>
+                            <i class="fa fa-pencil right" ng-click="cell.edit = true"></i>-->
+                        </div>
+                        <!--<div ng-show="cell.edit" class="col-md-12">
+                            <input class="input-id left" type="text" ng-model="cell.moduleId" placeholder="Module ID"><i class="fa fa-arrow-down right icon-back" ng-click="cell.edit = false"></i>
+                        </div>-->
+
+                        <div>
+                            <table class="custom-table">
+                                <tr ng-repeat="binRow in cell.binTable">
+                                    <td
+                                        ng-repeat="column in binRow"
+                                        ng-drop="true"
+                                        ng-drop-success="onBrandDropComplete($data, $event, column)"
+                                        ng-drag-start="onBinStart($data)"
+                                        ng-drag-move="onBinMove($data)"
+                                        ng-drag-stop="onBinStop($data)"
+                                        ng-class="{ binhover: binHovered }"
+                                        class="cell">
+                                        <div al-click="onEditBin(column);$event.stopPropagation();" ng-if="column.BinId && !column.Item" class="bin clickable">
+                                        </div>
+
+                                        <div al-click="onEditBin(column);$event.stopPropagation();" ng-if="column.BinId && column.Item" class="bin clickable" ng-class="{ fullbin : column.Item.ItemCode }" ng-drag="true" ng-drag-data="column">
+                                            <span ng-if="!column.Item.imageExist">{{column.Item.ItemCode}}
+                                            </span>
+
+                                            <img class="bin" ng-if="column.Item.imageExist" src="{{column.Item.imgPath}}" />
+
+                                        </div>
+
+                                        <div ng-click="onAddBin();$event.stopPropagation();" ng-if="column.isSlot" class="bin-slot clickable">
+                                        </div>
+                                    </td>
+                                    <!-- <td>
+                                        <div class="bin-slot" ng-drop="true" ng-drop-success="onBinDropComplete($data, $event, cell)" ng-drag-move="onBinMove($data)" ng-drag-stop="onBinStop($data)" ng-class="{ binhover: binHovered }">
+                                        </div>
+                                    </td>-->
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!--<div ng-repeat="brand in modules" class="btn btn-info btn-draggable btn-brand" ng-drag="true">
+            {{brand.title}}
+        </div>-->
+    </div>
+    <!--<div class="col-md-1 brand">
+        <!--<div ng-repeat="brand in brands" class="btn btn-info btn-draggable btn-brand" ng-drag="true" ng-drag-data="brand">
+            {{brand.title}}
+        </div>
+        {{modules}}
+        {{table}}
+        {{binHovered}}
+    </div>-->
+
+</div>
