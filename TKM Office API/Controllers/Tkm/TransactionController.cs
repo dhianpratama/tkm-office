@@ -104,5 +104,20 @@ namespace TKM_Office_API.Controllers.Tkm
             }
         }
 
+        [Authorize]
+        [HttpPost]
+        public IHttpActionResult ApproveTransaction(long transactionId)
+        {
+            try
+            {
+                _transactionService.ApproveTransaction(transactionId);
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
     }
 }

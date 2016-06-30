@@ -49,6 +49,7 @@ namespace TKM_Office_API
             //builder.RegisterType<StockCardOutOfStockService>().As<IStockCardOutOfStockService>().InstancePerLifetimeScope();
             builder.RegisterType<UserInstitutionRoleService>().As<IUserInstitutionRoleService>().InstancePerLifetimeScope();
             builder.RegisterType<RoleService>().As<IRoleService>().InstancePerLifetimeScope();
+            builder.RegisterType<TransactionReportService>().As<ITransactionReportService>().InstancePerLifetimeScope();
         }
     }
 }

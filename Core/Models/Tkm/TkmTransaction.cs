@@ -21,21 +21,21 @@ namespace Core.Models.Tkm
         public string Remarks { get; set; }
         public string PictureUrl { get; set; }
         public long Value { get; set; }
-        public TransactionStatus TransactionStatus { get; set; }
+        public bool IsApproved { get; set; }
 
         public virtual MasterUser User { get; set; }
     }
-    
+
     public enum TransactionType
     {
-        Income,
-        OutCome
+        Income = 1,
+        Outcome = 2
     }
 
     public enum TransactionStatus
     {
-        Pending,
-        Approved
+        Pending = 1,
+        Approved = 2
     }
 
     public class TkmTransactionReportModel
@@ -47,11 +47,11 @@ namespace Core.Models.Tkm
         public string Remarks { get; set; }
         public string PictureUrl { get; set; }
         public long Value { get; set; }
-        public TransactionStatus TransactionStatus { get; set; }
+        public bool IsApproved { get; set; }
 
-        public int Income { get; set; }
-        public int Outcome { get; set; }
-        public int Balance { get; set; }
+        public long? Income { get; set; }
+        public long? Outcome { get; set; }
+        public long? Balance { get; set; }
     }
 
 }

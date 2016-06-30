@@ -81,6 +81,7 @@
     <Compile Include="Services\Master\IUomService.cs" />
     <Compile Include="Services\Master\IUserInstitutionRoleService.cs" />
     <Compile Include="Services\Sys\ISysConfigurationService.cs" />
+    <Compile Include="Services\Tkm\ITransactionReportService.cs" />
     <Compile Include="Services\Tkm\ITransactionService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

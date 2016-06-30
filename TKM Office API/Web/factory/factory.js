@@ -612,9 +612,27 @@ angular.module('SmartShelve')
                         verb: 'GenerateReferenceNumber'
                     }
                 },
+                ApproveTransaction: {
+                    method: 'POST',
+                    params: {
+                        verb: 'ApproveTransaction'
+                    }
+                }
             });
         }
     ])
+.factory('TransactionReportService', [
+        '$resource', function ($resource) {
+            return $resource('/API/TransactionReport/:verb', {}, {
+                GetReportData: {
+                    method: 'POST',
+                    params: {
+                        verb: 'GetReportData'
+                    }
+                }
+            });
+        }
+])
     
     ;
 

@@ -7,7 +7,7 @@
             <div class="col-md-3">
                 <p class="input-group">
                     <input type="text" class="form-control" ng-model="param.DateFrom" ng-required="true"
-                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtFrom.opened" max-date="today" close-text="Close" />
+                        uib-datepicker-popup="dd/MM/yyyy" is-open="dtFrom.opened" max-date="today" close-text="Close" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="dtFrom.opened = !dtFrom.opened">
                             <i class="fa fa-calendar"></i>
@@ -23,7 +23,7 @@
             <div class="col-md-3">
                 <p class="input-group">
                     <input type="text" class="form-control" ng-model="param.DateTo" ng-required="true"
-                           uib-datepicker-popup="dd/MM/yyyy" is-open="dtTo.opened" max-date="today" close-text="Close" />
+                        uib-datepicker-popup="dd/MM/yyyy" is-open="dtTo.opened" max-date="today" close-text="Close" />
                     <span class="input-group-btn">
                         <button type="button" class="btn btn-default" ng-click="dtTo.opened = !dtTo.opened">
                             <i class="fa fa-calendar"></i>
@@ -34,11 +34,45 @@
         </div>
         <div class="row form-group">
             <div class="col-md-2">
-                <button type="button" class="btn btn-primary" ng-click="onGenerateReport()">
+                <button type="button" class="btn btn-primary" ng-click="fetchData()">
                     Generate Report &nbsp;
                     <i class="fa fa-file-text-o"></i>
                 </button>
             </div>
+        </div>
+        <div class="row" ng-if="transactions">
+            <table class="datatable table table-striped table-bordered data-grid" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th style="width: 10%;">Ref.</th>
+                        <th>Date</th>
+                        <th>Remarks</th>
+                        <th>Income</th>
+                        <th>Outcome</th>
+                        <th>Balance</th>
+                        <th>Is Approved?</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-show="transactions.length <= 0">
+                        <td colspan="7">No data.</td>
+                    </tr>
+                    <tr ng-show="transactions.length > 0" ng-repeat="tr in transactions">
+                        <td>
+                            <span ng-click="onView(tr)" style="color: blue; cursor: pointer;">{{tr.TransactionCode}}</span>
+                        </td>
+                        <td>{{tr.TransactionDate}}</td>
+                        <td>{{tr.Remarks}}</td>
+                        <td>{{formatMoney(tr.Income,2)}}</td>
+                        <td>{{formatMoney(tr.Outcome,2)}}</td>
+                        <td>{{formatMoney(tr.Balance,2)}}</td>
+                        <td>
+                            <i class="fa fa-yes"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 

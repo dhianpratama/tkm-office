@@ -39,13 +39,13 @@
                         </span>
                     </td>
                     <td>{{tr.TransactionCode}}</td>
-                    <td>{{displayDate(tr.Date)}}</td>
+                    <td>{{displayDate(tr.TransactionDate)}}</td>
                     <td>{{tr.Remarks}}</td>
                     <td>{{types[tr.Type]}}</td>
                     <td>{{formatMoney(tr.Value,2)}}</td>
                 </tr>
             </tbody>
-            <tfoot ng-show="brands.length > 0">
+            <tfoot ng-show="transactions.length > 0">
                 <tr>
                     <th colspan="7">
                         <uib-pagination total-items="searchQuery.TotalData" items-per-page="searchQuery.DataPerPage" ng-model="searchQuery.Page" ng-change="fetchData()"

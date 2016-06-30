@@ -27,7 +27,7 @@ namespace Service.Tkm
         {
             var result = _transactionRepository.Query().Where(b => b.IsActive);
             searchQuery.TotalData = BaseSearchQueryExpression<TkmTransaction>.DefaultQueryExpression(ref result, searchQuery);
-            return result.ToList();
+            return result.OrderByDescending(e=> e.TransactionDate).ThenByDescending(e=> e.LastUpdatedDate).ToList();
         }
 
         public TkmTransaction FetchOne(long transactionId)
@@ -53,6 +53,14 @@ namespace Service.Tkm
         public string GenerateReferenceNumber()
         {
             return string.Format("#{0}", DateTime.Now.ToString("yyyyMMddHHmmss"));
+        }
+
+        public void ApproveTransaction(long transactionId)
+        {
+            var data = FetchOne(transactionId);
+            data.IsApproved = true;
+            _transactionRepository.Save(data);
+            _transactionRepository.Commit();
         }
     }
 }

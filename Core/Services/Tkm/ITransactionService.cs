@@ -14,5 +14,6 @@ namespace Core.Services.Tkm
         void Save(TkmTransaction data);
         void Delete(TkmTransaction data);
         string GenerateReferenceNumber();
+        void ApproveTransaction(long transactionId);
     }
 }

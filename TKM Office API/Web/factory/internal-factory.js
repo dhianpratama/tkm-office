@@ -1,16 +1,16 @@
 angular.module('SmartShelve')
-    .factory('AuthService', function($http, $q, localStorageService, UserService) {
+    .factory('AuthService', function ($http, $q, localStorageService, UserService) {
         var authServiceFactory = {};
 
         var _authentication = {
             isAuth: false,
-            userName : ""
+            userName: ""
         };
 
         var _saveRegistration = function (registration) {
             _logOut();
-            var jsonResult = UserService.Register(registration, function(){
-               return jsonResult.data;
+            var jsonResult = UserService.Register(registration, function () {
+                return jsonResult.data;
             });
 
             //return $http.post(serviceBase + 'api/account/register', registration).then(function (response) {
@@ -88,10 +88,10 @@ angular.module('SmartShelve')
 
         return authInterceptorServiceFactory;
     })
-    .factory('SearchQueryService', function() {
+    .factory('SearchQueryService', function () {
         var searchQuery = {};
         return {
-            init: function(sortBy, searchFields){
+            init: function (sortBy, searchFields) {
                 searchQuery = {
                     Page: 1,
                     DataPerPage: 10,
@@ -105,8 +105,8 @@ angular.module('SmartShelve')
                 };
                 searchQuery.SortBy = sortBy;
                 if (angular.isArray(searchFields)) {
-                    angular.forEach(searchFields, function(val, key){
-                       searchQuery.Search.Fields.push(val);
+                    angular.forEach(searchFields, function (val, key) {
+                        searchQuery.Search.Fields.push(val);
                     });
                 }
                 else {
@@ -114,42 +114,42 @@ angular.module('SmartShelve')
                 }
                 return searchQuery;
             },
-            getQueryParam: function(){
+            getQueryParam: function () {
                 return searchQuery;
             },
-            setQueryParam: function(val){
+            setQueryParam: function (val) {
                 searchQuery = val;
             }
         };
     })
-    .factory('SysMessageService', function() {
+    .factory('SysMessageService', function () {
         return {
-            getSaveSuccessMsg: function(){
+            getSaveSuccessMsg: function () {
                 return "Data Saved Successfully";
             },
-            getSaveErrorMsg: function(errMsg){
+            getSaveErrorMsg: function (errMsg) {
                 var msg = "Error Saving Data";
-                if (errMsg != '' && errMsg != null){
+                if (errMsg != '' && errMsg != null) {
                     msg += ". Error: " + errMsg;
                 }
                 return msg;
             },
-            getLoadErrorMsg: function(errMsg){
+            getLoadErrorMsg: function (errMsg) {
                 var msg = "Error Loading Data";
-                if (errMsg != '' && errMsg != null){
+                if (errMsg != '' && errMsg != null) {
                     msg += ". Error: " + errMsg;
                 }
                 return msg;
             },
-            getDeleteConfirmationMsg: function(dataId){
+            getDeleteConfirmationMsg: function (dataId) {
                 return "Are you sure you want to delete [" + dataId + "] ?";
             },
-            getDeleteSuccessMsg: function(){
+            getDeleteSuccessMsg: function () {
                 return "Data Deleted Successfully";
             },
-            getDeleteErrorMsg: function(errMsg){
+            getDeleteErrorMsg: function (errMsg) {
                 var msg = "Error Deleting Data";
-                if (errMsg != '' && errMsg != null){
+                if (errMsg != '' && errMsg != null) {
                     msg += ". Error: " + errMsg;
                 }
                 return msg;
@@ -159,7 +159,7 @@ angular.module('SmartShelve')
     .factory('BreadcrumbService', function ($rootScope) {
         var path = [];
         var callback = null;
-        $rootScope.$on("$locationChangeStart", function(event, next, current) {
+        $rootScope.$on("$locationChangeStart", function (event, next, current) {
             path = [];
         });
         return {
@@ -177,4 +177,22 @@ angular.module('SmartShelve')
                     callback();
             }
         };
-    });
+    })
+
+    .factory('NumberService', function () {
+        return {
+            formatMoney: function (v, c, d, t) {
+                var n = v,
+                    c = isNaN(c = Math.abs(c)) ? 2 : c,
+                    d = d == undefined ? "." : d,
+                    t = t == undefined ? "," : t,
+                    s = n < 0 ? "-" : "",
+                    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "",
+                    j = (j = i.length) > 3 ? j % 3 : 0;
+                return 'Rp. ' + s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+            }
+        }
+    })
+
+
+;

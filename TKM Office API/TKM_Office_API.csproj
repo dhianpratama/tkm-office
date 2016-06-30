@@ -148,6 +148,7 @@
     <Compile Include="Controllers\Master\UserInstitutionRoleController.cs" />
     <Compile Include="Controllers\Sys\SysConfigurationController.cs" />
     <Compile Include="Controllers\Tkm\TransactionController.cs" />
+    <Compile Include="Controllers\Tkm\TransactionReportController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\Utility\FileUploadController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="RequestParam\StockCardQtyMovementParam.cs" />
     <Compile Include="RequestParam\StockCardSalesGraphViewParam.cs" />
     <Compile Include="RequestParam\StockMovementParam.cs" />
+    <Compile Include="RequestParam\TransactionReportParam.cs" />
     <Compile Include="RequestParam\UserRegistration.cs" />
     <Compile Include="Security\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Security\WebApiAuthorizeAttribute.cs" />
